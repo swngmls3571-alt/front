@@ -7,7 +7,7 @@ function login() {
     }
     return(
         <> 
-        <p>로그인창11</p>
+        <p>로그인창</p>
         <button onClick={addclick}>상품등록창으로 이동</button>
         </>
     )

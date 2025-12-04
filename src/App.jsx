@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Header from './compnents/header.jsx'
 import Addmain from './compnents/addmain.jsx'
 import Product from './compnents/product.jsx'
 import Member from './compnents/member.jsx'
@@ -14,6 +15,8 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Header/>
+      
       <Routes>
         <Route path= '/' element={<Addmain/>}/>
         <Route path= '/member' element={<Member/>}/>

@@ -21,7 +21,7 @@ function addmain() {
         <>
             <p>메인페이지</p>
             {data.map((item) => (
-                <div key={item.id}>
+                <div key={item.pId}>
                     <p>상품명: {item.pName}</p>
                     <p>가격: {item.pPrice}</p>
                 </div>

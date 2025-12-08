@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 
 
 function Header() {
-    const [search, setSearch] = useState("");
-    const [data, setData] = useState([]);
+    const [search, setSearch] = useState(""); // 입력값
+    const [data, setData] = useState([]); // 전체 상품
+    const [searchResult, setSearchResult] = useState([]); //검색 결과값
+
     
     useEffect(() => {
         async function test() {
@@ -17,12 +19,14 @@ function Header() {
     }, []);
     //검색 필터링부분
     //검색할때 해당 상품들만 골라주는 역할
-    const filterData = data.filter(item =>
-        (item.pName || "").toLowerCase().includes((search || "").toLowerCase())
-    );
     //검색창 테스트 완료! ex)로션을 "로"만 쳐도 로션관련된거 나오게 출력
     function onClick() {
-        console.log("검색",filterData)
+        const filterData = data.filter(item =>
+        (item.pName || "")
+        .toLowerCase()
+        .includes((search || "").toLowerCase())
+    );
+    setSearchResult(filterData);
     }
     return (
         <>
@@ -36,9 +40,10 @@ function Header() {
                     </ul>
                 </div>
                 <div className="logo">
-                    <h1><a href="http://localhost:5173/">로고</a></h1>
+                    <h1><a href="http://localhost:5174/">로고</a></h1>
                     <input type="text" value={search}
-                        onChange={(e) => setSearch(e.target.value)} placeholder="상품 검색하세요" />
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="상품 검색하세요" />
                         <button value={search} onClick={onClick}>🔍</button>
                 </div>
                 
@@ -57,6 +62,12 @@ function Header() {
                     </ul>
                 </div>
             </header>
+            {/* {setSearchResult.length} */}
+            {searchResult.map((item) => (
+                <div key={item.pId}>
+                    <p>{item.pName} {item.description}/ {item.pPrice}원</p>
+                </div>
+            ))}
         </>
     )
 }

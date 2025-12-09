@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 function addmain() {
     const [data, setData] = useState([])
-    const com = useNavigate();
     //상품 불러오는 부분
     useEffect(() => {
         async function test() {
@@ -13,20 +12,18 @@ function addmain() {
         }
         test();
     }, []);
-    function productclick() {
-        com('/product')
-    }
     //data안에 상품을 전부 출력
     return (
         <>
             <p>메인페이지</p>
             {data.map((item) => (
-                <div key={item.pId}>
+                <div key={item.pId} className="pbox">
+                    
                     <p>상품명: {item.pName}</p>
+                    <p>상품 설명: {item.description}</p>
                     <p>가격: {item.pPrice}</p>
                 </div>
             ))}
-            <button onClick={productclick}>상품등록창으로 이동</button>
         </>
     )
 }

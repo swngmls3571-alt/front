@@ -10,6 +10,7 @@ import Member from './compnents/member.jsx'
 import Login from './compnents/login.jsx'
 import Cart from './compnents/cart.jsx'
 import Mypage from './compnents/mypage.jsx'
+import Search from './compnents/search.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +21,7 @@ function App() {
       
       <Routes>
         <Route path= '/' element={<Addmain/>}/>
+        <Route path= '/search' element={<Search/>}/>
         <Route path= '/member' element={<Member/>}/>
         <Route path= '/login' element={<Login/>}/>
         <Route path= '/product' element={<Product/>}/>

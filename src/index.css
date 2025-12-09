@@ -36,6 +36,28 @@
     color: inherit;
     text-decoration: none;
 }
-.pimg img{
+.pimg{
     width: 300px;
+    border: 1px solid black;
+    text-align: center;
+}
+.pbox {
+    width: 300px;
+    border: 1px solid black;
+}
+.but {
+    width: 30px;
+
+}
+.but img{
+    width: 100%;
+}
+.imgurl {
+    border: 1px solid black;
+    width: 200px;
+}
+
+.mun {
+    width: 200px;
+    border: 1px solid black;
 }

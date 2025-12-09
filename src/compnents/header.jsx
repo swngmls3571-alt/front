@@ -1,12 +1,13 @@
 import { useState,useEffect} from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 
 function Header() {
     const [search, setSearch] = useState(""); // 입력값
     const [data, setData] = useState([]); // 전체 상품
     const [searchResult, setSearchResult] = useState([]); //검색 결과값
-
+    const navigate = useNavigate();
     
     useEffect(() => {
         async function test() {
@@ -22,10 +23,11 @@ function Header() {
     //검색창 테스트 완료! ex)로션을 "로"만 쳐도 로션관련된거 나오게 출력
     function onClick() {
         const filterData = data.filter(item =>
-        (item.pName || "")
-        .toLowerCase()
-        .includes((search || "").toLowerCase())
+        (item.pName || "").toLowerCase().includes((search || "").toLowerCase())// 화면에 나오게
     );
+
+    navigate(`/search?keyword=${search}`);
+    // console.log(search)
     setSearchResult(filterData);
     }
     return (
@@ -37,6 +39,7 @@ function Header() {
                         <li><Link to={"/login"}>로그인</Link></li>
                         <li><Link to={"/cart"}>장바구니</Link></li>
                         <li><Link to={"/mypage"}>마이페이지</Link></li>
+                        <li><Link to={"/product"}>상품등록창</Link></li>
                     </ul>
                 </div>
                 <div className="logo">
@@ -44,7 +47,9 @@ function Header() {
                     <input type="text" value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="상품 검색하세요" />
-                        <button value={search} onClick={onClick}>🔍</button>
+                        <button value={search} onClick={onClick} className="but">
+                            <img src="./img/imgg.png" alt="돋보기"/>
+                        </button>
                 </div>
                 
                 <div className="menubox">
@@ -62,12 +67,6 @@ function Header() {
                     </ul>
                 </div>
             </header>
-            {/* {setSearchResult.length} */}
-            {searchResult.map((item) => (
-                <div key={item.pId}>
-                    <p>{item.pName} {item.description}/ {item.pPrice}원</p>
-                </div>
-            ))}
         </>
     )
 }

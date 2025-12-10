@@ -43,14 +43,17 @@
 }
 .pbox {
     width: 300px;
-    border: 1px solid black;
+    height: 500px;
 }
-.pbox>img {
-    width: 100%;
+.PP {
+    display: flex;
 }
 .but {
     width: 30px;
 
+}
+.ppbox {
+    display: flex;
 }
 .but img{
     width: 100%;
@@ -59,8 +62,10 @@
     border: 1px solid black;
     width: 200px;
 }
-
 .mun {
     width: 200px;
     border: 1px solid black;
+}
+.mainbox {
+    width: 300px;
 }

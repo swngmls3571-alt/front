@@ -5,6 +5,7 @@ function Product() {
     const [pPrice, setpPrice] = useState("")
     const [description, setdescription] = useState("")
     const [stock, setStock] = useState("")
+    const [pcategory, setPcategory] = useState("")
     const useNav = useNavigate();
     const [imgString, setImgString] = useState("");
     const [imgUrl, setImgUrl] = useState(null);
@@ -17,10 +18,11 @@ function Product() {
     formData.append("pPrice", pPrice);
     formData.append("description", description);
     formData.append("stock", stock);
+    formData.append("pcategory", pcategory);
     formData.append("img", imgUrl); // input에서 받아온 파일
         fetch("http://localhost:8080/dbprod", {
             method: "POST",
-            body: formData  // ★ JSON 아님
+            body: formData 
         })
             .then(res => {
                 //에러를 보냈는지 확인하는 조건문
@@ -43,6 +45,7 @@ function Product() {
                 setpName("");
                 setpPrice("");
                 setdescription("");
+                setPcategory("");
                 setStock("");
             })
             .then(() => window.location.reload()) // 빈칸
@@ -51,7 +54,7 @@ function Product() {
                 alert(err.message);
             })
 
-       }
+       } 
        function back() {
             history.back();
        }
@@ -67,6 +70,7 @@ function Product() {
                     <p>이름: <input value={pName} onChange={(e) => setpName(e.target.value)} /></p>
                     <p>가격: <input value={pPrice} onChange={(e) => setpPrice(e.target.value)} /></p>
                     <p>설명:<input value={description} onChange={(e) => setdescription(e.target.value)} /></p>
+                    <p>카테고리:<input value={pcategory} onChange={(e) => setPcategory(e.target.value)} /></p>
                     <p>재고:<input value={stock} onChange={(e) => setStock(e.target.value)} /></p>
                 </div>
                 <button onClick={saveProduct}>등록하기</button>

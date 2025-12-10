@@ -23,12 +23,16 @@ function Header() {
     //검색창 테스트 완료! ex)로션을 "로"만 쳐도 로션관련된거 나오게 출력
     function onClick() {
         const filterData = data.filter(item =>
-        (item.pName || "").toLowerCase().includes((search || "").toLowerCase())// 화면에 나오게
-    );
+            (item.pName || "").toLowerCase().includes((search || "").toLowerCase()) ||// 화면에 나오게
+            (item.pcategory + "").toLowerCase().includes((search || "").toLowerCase())
+        );
+        navigate(`/search?keyword=${search}`, {
+            state: { result: filterData }
+        });
+        // navigate("/search", { state: { result: filterData } });
+        // setSearchResult(filterData);
+        // console.log(search)/
 
-    navigate(`/search?keyword=${search}`);
-    // console.log(search)
-    setSearchResult(filterData);
     }
     return (
         <>

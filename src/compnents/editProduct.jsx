@@ -16,6 +16,7 @@ function Editprouct() {
             }
             load();
         }, []);
+    //상품재고 수정
     function update(pId,stock) {
     
        fetch("http://localhost:8080/dbprod", {
@@ -40,6 +41,7 @@ function Editprouct() {
                 <div key={item.pId} className="pbox">
                     <p>상품명: {item.pName}</p>
                     <p>상품 설명: {item.description}</p>
+                    <p>카테고리: {item.pcategory}</p>
                     <p>가격: {item.pPrice}</p>
 
                     <input type="number" 

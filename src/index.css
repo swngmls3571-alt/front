@@ -46,8 +46,7 @@
     border: 1px solid black;
 }
 .pbox>img {
-    width: 200px;
-    height: 100px;
+    width: 100%;
 }
 .but {
     width: 30px;

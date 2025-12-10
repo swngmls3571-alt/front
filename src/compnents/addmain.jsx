@@ -17,11 +17,13 @@ function addmain() {
         <>
             <p>메인페이지</p>
             {data.map((item) => (
-                <div key={item.pId} className="pbox">
-                    <img src={`http://localhost:8080${item.img}`} alt="{item.img}" />
-                    <p>상품명: {item.pName}</p>
-                    <p>상품 설명: {item.description}</p>
-                    <p>가격: {item.pPrice}</p>
+                <div key={item.pId} className="mainbox">
+                    <div className="pbox">
+                        <img src={`http://localhost:8080${item.img}`} alt="{item.img}" />
+                        <p>상품명: {item.pName}</p>
+                        <p>상품 설명: {item.description}</p>
+                        <p>가격: {item.pPrice}</p>
+                    </div>
                 </div>
             ))}
         </>

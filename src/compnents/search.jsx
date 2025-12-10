@@ -19,12 +19,13 @@ function Search() {
 
     return (
         <>
-            <h2>전체메뉴{keyword}</h2>
+            <h2>전체메뉴 "{keyword}"</h2>
 
             {result.length === 0 && <p>검색 결과 없음</p>}
             
             {result.map(item => (
-                <div key={item.pId} className="mun">
+                <div key={item.pId} className="pbox">
+                    <img src={`http://localhost:8080${item.img}`} alt="{item.img}" />
                     <p>{item.pName}</p>
                     <p> {item.pPrice}원</p>
                 </div>

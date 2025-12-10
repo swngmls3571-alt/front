@@ -11,6 +11,8 @@ import Login from './compnents/login.jsx'
 import Cart from './compnents/cart.jsx'
 import Mypage from './compnents/mypage.jsx'
 import Search from './compnents/search.jsx'
+import Admin from './compnents/admin.jsx'
+import EditProduct from './compnents/editProduct.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,6 +24,8 @@ function App() {
       <Routes>
         <Route path= '/' element={<Addmain/>}/>
         <Route path= '/search' element={<Search/>}/>
+        <Route path= '/admin' element={<Admin/>}/>
+        <Route path= '/editProduct' element={<EditProduct/>}/>
         <Route path= '/member' element={<Member/>}/>
         <Route path= '/login' element={<Login/>}/>
         <Route path= '/product' element={<Product/>}/>

@@ -7,24 +7,20 @@ function Product() {
     const [stock, setStock] = useState("")
     const useNav = useNavigate();
     const [imgString, setImgString] = useState("");
-    const [imgUrl, setImgUrl] = useState("");
+    const [imgUrl, setImgUrl] = useState(null);
 
-    function handfile(e) {
-        const file = e.target.files[0];
-        setImgUrl(URL.createObjectURL(file))
-        const reader = new FileReader(); // 문자열로 변환
-        reader.readAsDataURL(file)
-        reader.onload = () => {
-            setImgString(reader.result)
-        }
-    }
 
 
     function saveProduct() {
+        const formData = new FormData();
+    formData.append("pName", pName);
+    formData.append("pPrice", pPrice);
+    formData.append("description", description);
+    formData.append("stock", stock);
+    formData.append("img", imgUrl); // input에서 받아온 파일
         fetch("http://localhost:8080/dbprod", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ pName, pPrice, description, stock })
+            body: formData  // ★ JSON 아님
         })
             .then(res => {
                 //에러를 보냈는지 확인하는 조건문
@@ -55,15 +51,18 @@ function Product() {
                 alert(err.message);
             })
 
-    }
-
+       }
+       function back() {
+            history.back();
+       }
     return (
 
         <>
+            <button onClick={back}>이전</button>
             <p>상품등록창</p>
             <div className="pimg">
-                <input type="file" onChange={handfile} />
-                {imgUrl && <img src={imgUrl} alt="미리보기 이미지" className="imgurl"/>}
+                <input type="file" accept="image/" className="imgurl" onChange={(e) =>setImgUrl(e.target.files[0])}/>
+                 
                 <div>
                     <p>이름: <input value={pName} onChange={(e) => setpName(e.target.value)} /></p>
                     <p>가격: <input value={pPrice} onChange={(e) => setpPrice(e.target.value)} /></p>

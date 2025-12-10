@@ -39,11 +39,11 @@ function Header() {
                         <li><Link to={"/login"}>로그인</Link></li>
                         <li><Link to={"/cart"}>장바구니</Link></li>
                         <li><Link to={"/mypage"}>마이페이지</Link></li>
-                        <li><Link to={"/product"}>상품등록창</Link></li>
+                        <li><Link to={"/admin"}>관리자페이지</Link></li>
                     </ul>
                 </div>
                 <div className="logo">
-                    <h1><a href="http://localhost:5174/">로고</a></h1>
+                    <h1><Link to={"/"}>로고</Link></h1>
                     <input type="text" value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="상품 검색하세요" />

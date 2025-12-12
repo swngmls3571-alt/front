@@ -42,11 +42,10 @@
     text-align: center;
 }
 .pbox {
-    width: 300px;
-    height: 500px;
 }
 .PP {
     display: flex;
+    border: 1px solid black;
 }
 .but {
     width: 30px;

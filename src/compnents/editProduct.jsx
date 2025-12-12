@@ -30,6 +30,24 @@ function Editprouct() {
        })
        .catch(err => console.error(err))
     }
+    //상품재고 삭제
+    function deletes(pId) {
+        if (!confirm(`상품을 삭제 하시겠습니까?`)) {
+            return;
+        }
+
+        fetch(`http://localhost:8080/dbprod/delete/${pId}`, {
+            method: "DELETE",
+        })
+            .then(res => res.json())
+            .then(() => {
+                setList(prev => prev.filter(item => item.pId !== pId))
+                alert('삭제 되었습니다.')
+            }) 
+       
+
+       .catch(err => console.error(err))
+    }
 
 
     return(
@@ -48,6 +66,7 @@ function Editprouct() {
                     defaultValue={item.stock}
                     onChange={(e) =>setNewStock(e.target.value) }/>
                     <button onClick={() => update(item.pId, newStock)}>수정</button>
+                    <button onClick={() => deletes(item.pId)}>삭제</button>
                 </div>
                 
             ))}
